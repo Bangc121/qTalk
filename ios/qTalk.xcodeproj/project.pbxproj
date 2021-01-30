@@ -148,7 +148,6 @@
 				313D165116BF9A4F357336DD /* Pods-qTalk-tvOSTests.debug.xcconfig */,
 				36B1F6D92EC8824B80F31127 /* Pods-qTalk-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

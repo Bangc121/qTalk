@@ -7,9 +7,11 @@ import { ThemeType, useThemeContext } from '@dooboo-ui/theme';
 import React from 'react';
 
 import Home from '../screen/Home/index';
+import SignIn from '../screen/SignIn';
 
 export type RootStackParamList = {
   Home: undefined;
+  SignIn: undefined;
   default: undefined;
 }
 
@@ -25,7 +27,7 @@ function RootNavigator(): React.ReactElement {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="SignIn"
         screenOptions={{
           headerStyle: {
             backgroundColor: theme.background,
@@ -37,6 +39,7 @@ function RootNavigator(): React.ReactElement {
           themeType === ThemeType.DARK ? 'screen' : 'float'
         }
       >
+        <Stack.Screen name='SignIn' component={SignIn} />
         <Stack.Screen name='Home' component={Home} />
       </Stack.Navigator>
     </NavigationContainer>
