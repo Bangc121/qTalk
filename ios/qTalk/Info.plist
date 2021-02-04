@@ -2,15 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>LSApplicationQueriesSchemes</key>
-  <array>
-    <string>kakao622913133051c12d293c6856c0e41570</string>
-    <string>kakaokompassauth</string>
-    <string>storykompassauth</string>
-    <string>kakaolink</string>
-    <string>kakaotalk-5.9.7</string>
-    <string>storylink</string>
-  </array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -36,13 +27,23 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>kakao</string>
-				<string>622913133051c12d293c6856c0e41570</string>
+				<string>kakao622913133051c12d293c6856c0e41570</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>KAKAO_APP_KEY</key>
+	<string>622913133051c12d293c6856c0e41570</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>kakao622913133051c12d293c6856c0e41570</string>
+		<string>kakaokompassauth</string>
+		<string>storykompassauth</string>
+		<string>kakaolink</string>
+		<string>kakaotalk-5.9.7</string>
+		<string>storylink</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -74,7 +75,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>KAKAO_APP_KEY</key>
-	<string>622913133051c12d293c6856c0e41570</string>
 </dict>
 </plist>
