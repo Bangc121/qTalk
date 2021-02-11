@@ -3,9 +3,10 @@ import { StyleProp, TextStyle } from 'react-native';
 import { SFC } from 'react';
 
 export interface User {
-  displayName: string;
-  age: number;
-  job: string;
+  userId: string | null;
+  nickname: string | null;
+  email: string | null;
+  profile: string | null;
 }
 
 interface IconProps {

@@ -5,22 +5,22 @@ import styled from 'styled-components/native';
 import KakaoLogins, { KAKAO_AUTH_TYPES } from '@react-native-seoul/kakao-login';
 import {useAppContext} from '../../providers/AppProvider';
 import {User} from '../../types';
+import { useId } from "react-id-generator";
 
 const Container = styled.View`
   flex: 1;
   align-self: stretch;
   overflow: scroll;
   /* background-color: ${({ theme }): string => theme.background}; */
-
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   overflow: hidden;
 `;
 
 const LoginButton = styled.TouchableOpacity<{ backgroundColor: string }>`
-  height: 44;
-  width: 274;
+  height: 44px;
+  width: 274px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -57,20 +57,9 @@ function SignIn(props: Props): React.ReactElement {
     state: {user},
     setUser,
   } = useAppContext();
-  const [isLoggingIn, setIsLoggingIn] = React.useState<boolean>(false);
 
-  const onLogin = (): void => {
-    setIsLoggingIn(true);
-
-    const myUser: User = {
-      displayName: 'dooboolab',
-      age: 30,
-      job: 'developer',
-    };
-
-    setUser(myUser);
-    setIsLoggingIn(false);
-  };
+  const [isLoggingIn, setIsLoggingIn] = useState<boolean>(false);
+  const [userId] = useId();
 
   const kakaoLogin = () => {
     KakaoLogins.login([KAKAO_AUTH_TYPES.Talk, KAKAO_AUTH_TYPES.Account])
@@ -97,7 +86,19 @@ function SignIn(props: Props): React.ReactElement {
     KakaoLogins.getProfile()
       .then(result => {
         console.log(result);
-        navigation.navigate('Home');
+
+        setIsLoggingIn(true);
+
+        const myUser: User = {
+          userId,
+          nickname: result.nickname,
+          email: result.email,
+          profile: result.profile_image_url,
+        };
+    
+        setUser(myUser);
+        setIsLoggingIn(false);
+        navigation.navigate('BottomTabs');
       })
       .catch(err => {
         console.log(err);
@@ -106,15 +107,7 @@ function SignIn(props: Props): React.ReactElement {
 
   return (
     <Container>
-      <StyledText
-        style={{
-          marginTop: 100,
-        }}>
-        {user?.displayName ?? ''}
-      </StyledText>
-      <StyledText>{user?.age ?? ''}</StyledText>
-      <StyledText>{user?.job ?? ''}</StyledText>
-      <LoginButton backgroundColor="#ffeb00" onPress={(): void => onLogin()} isLoading={isLoggingIn}>
+      <LoginButton backgroundColor="#ffeb00" onPress={(): void => kakaoLogin()} isLoading={isLoggingIn}>
         <ButtonText color="#3c1e1e">카카오로 로그인</ButtonText>
       </LoginButton>
     </Container>

@@ -17,10 +17,10 @@ const Container = styled.View`
 `;
 
 interface Props {
-  navigation: RootStackNavigationProps<'Home'>;
+  navigation: RootStackNavigationProps<'Friends'>;
 }
 
-function Home(props: Props): React.ReactElement {
+function Friends(props: Props): React.ReactElement {
   const {navigation} = props;
 
   const {
@@ -34,7 +34,6 @@ function Home(props: Props): React.ReactElement {
         source={{
           uri: user?.profile,
         }}/>
-      <Text>{user?.userId}</Text>
       <Text>{user?.nickname}</Text>
       <Text>{user?.email}</Text>
       <TouchableOpacity style={{width: '100%', height: 50, backgroundColor: 'green'}} onPress={(): void => navigation.navigate('Chat')}><Text>chat</Text></TouchableOpacity>
@@ -42,4 +41,4 @@ function Home(props: Props): React.ReactElement {
   );
 }
 
-export default Home;
+export default Friends;
